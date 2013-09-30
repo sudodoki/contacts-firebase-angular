@@ -1,0 +1,26 @@
+<div class="unit two-fifths master" style='background-color: gray;'>
+<div class="unit whole home-link">
+      <a class='home' ui-sref='welcome'></a>
+</div>
+  <div class="unit whole">
+    <input class='unit whole' placeholder='Searh you contacts' type="text" ng-model='filter.name'>
+    <button title='empty filter' class='remove-icon' ng-click="filter=''"ng-show='filter.length'></button>
+  </div>
+  <button ng-click='getRandom()'>+Random</button>
+  <button ui-sref='create'>+Add</button>
+  <ul class="unit whole categories-list">
+    <li class='category-item' ng-class='{active: isCategorySelected(category)}' ng-click='toggleCategory(category)' ng-repeat='category in categories | orderBy:isCategorySelected:-1'>{{category}}</li> 
+  </ul>
+  <ul class="person-list hidden-scrollbar unit whole">
+    <li ng-class="{active: person.id == id}"class='person-item' ng-repeat='person in persons | filter:filter'>
+      <a class='unit four-fifths' ui-sref="detail({id: person.id})">{{ person.name }}
+      </a>
+      <span class='unit one-fifth' >
+        <span class='edit-icon' title='edit contact' ui-sref="edit({id: person.id})"></span>
+        <button class='remove-icon no-bg' title='delete contact' ng-click='delete(person, $index)'></button>
+      </span>
+      </li>
+  </ul>
+
+</div>
+<div class='detail unit three-fifths' ui-view style='background-color: rgb(145, 145, 216);'></div> 

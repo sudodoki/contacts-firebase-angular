@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Awesome firebase first experience</title>
+
+  <link rel="stylesheet" type="text/css" href="styles/application.css">
+</head>
+<body ng-app="contactsApp">
+  <div ui-view class="grid">
+    <h1>Application is loading... Probably waiting on firebase.</h1>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src='scripts/controllers.js'></script>
+  <script src='scripts/directives.js'></script>
+  <script src='scripts/filters.js'></script>
+  <script src='scripts/main.js'></script>
+  <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+  <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-simple-login.js'>
+  </script>
+  <script src='scripts/services.js'></script>
+</body>
+</html>

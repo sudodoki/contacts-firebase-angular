@@ -1,0 +1,23 @@
+<div class="unit three-fifths">
+  <h2>Тестовое задание для поступления на курсы от <a href="http://codeangels.herokuapp.com/">CodeAngels</a></h2>
+Слева – адресная книга, которых миллионы.
+Справа на кнопочке должна быть выезжающая приблуда с чатиком (логин виа ФБ/гитхаб), йееей. А так, everybody's admin.
+</div>
+<button ng-class='{opened: slide}' class='open-chat' ng-click='slide=!slide'>&#9776;</button>
+<div class="unit one-fifth chat stick-to-right">
+<section ng-switch='authorized'>
+  <button ng-click="logout()" ng-switch-when='true'>Logout</button>
+  <div ng-switch-default>
+    <button ng-click="login('facebook')">Login using facebook</button>
+    <button ng-click="login('github')">Login using github</button>
+  </div>
+</section>
+
+<form ng-show='authorized' ng-submit='addComment(commentToBe)'>
+  <input class="unit four-fifths" type="text" ng-model='commentToBe'>
+  <input class="unit one-fifth" type="submit" value='Add comment'>
+</form>
+  <ul class='unit whole plain-list'>
+    <li ng-repeat='comment in comments'>{{comment.name}}:{{comment.msg}}</li>
+  </ul>
+</div>

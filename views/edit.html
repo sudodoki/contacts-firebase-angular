@@ -1,0 +1,12 @@
+<h1>Editing will be done here</h1>
+<form class='unit half' name='personForm' ng-submit='updatePerson()'>
+  <input class='unit whole' placeholder='Name'  type="text" ng-model='fakePerson.surname'>
+  <input class='unit whole' placeholder='Surname'  type="text" ng-model='fakePerson.name'>
+  <!-- I would use email type, but it won't work with ngList -->
+  <input ng-list class='unit whole' pattern="^(([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}),?\s*)+$"placeholder='Email(s, separated by commas)' type="text" ng-model='fakePerson.email'>
+  <input ng-list=',' class='unit whole' pattern="[\(\)\-\d,\s]*" x-moz-errormessage="Digits, parentheses and dashes ~ (0-9) are allowed" title="At least one digit should be present" placeholder='Phone(s, separated by commas)' type="tel" ng-model='fakePerson.phone'>
+  <div class="unit whole">
+    <span class="one-fifth">Categories:</span><input tag-input class='four-fifths' placeholder='Add category' type="text" ng-model='fakePerson.category' style='vertical-align: bottom;'>
+  </div>
+  <input type='submit' value='{{button}}'></input>
+</form>

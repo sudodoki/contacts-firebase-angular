@@ -1,0 +1,18 @@
+<h1>Details on {{person.surname | capitalize}}, {{person.name | capitalize}}</h1>
+<a ui-sref='edit({id: id})'>Edit this entry</a>
+<section ng-show='person.email' class='unit whole' ng-repeat='email in person.email | toArray'>
+  <address class="email"><i></i>{{email}}</address>
+  <a href="mailto:{{email}}<">(write an email)</a>
+</section>
+<section ng-show='person.phone' class='unit whole' ng-repeat='phone in person.phone | toArray'>
+  <span class='phone' itemprop="tel"><i></i>{{phone}}</span>
+  <a href="callto:{{phone}}<">(call)</a>
+</section>
+<section ng-show='person.text' class='unit whole' ng-repeat='text in person.text | toArray'>
+  <p>{{text}}</p>
+</section>
+<section ng-show='person.category' class='unit whole'>
+  Categories: {{person.category | toList}}
+</section>
+
+<insta-field></insta-field>

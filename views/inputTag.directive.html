@@ -1,0 +1,7 @@
+<div class="tag-input-ctn">
+    <div data-ng-repeat="tag in inputTags" class="input-tag">
+      {{ tag }}
+      <div class="delete-tag" data-ng-click="deleteTag($index)">&times;</div>
+    </div>
+    <input ng-transclude ng-model='tagText' ng-style="{width: inputWidth}" new-tag="addTag()" delete-tag="deleteTag()">
+</div>
