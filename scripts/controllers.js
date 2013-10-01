@@ -3,7 +3,6 @@
   var controllers = angular.module('contactsApp.controllers', [])
   controllers.controller('HomeCtrl', function(Person, $http, $scope, $location) {
     $scope.Ctrl = 'HomeCtrl';
-    $scope.filter = {name: '', category: []}
     $scope.persons = Person.all($scope)
     $scope.categories = Person.allCategories()
 
@@ -14,10 +13,16 @@
         $scope.filter.category.splice($scope.filter.category.indexOf(category), 1)
       }
     }
+
     $scope.isCategorySelected = function(category) {
       return ($scope.filter.category.indexOf(category) != -1)
     }
-
+    $scope.isFilterEmpty = function() {
+      return ($scope.filter.name == '' && $scope.filter.category.length == 0)
+    }
+    $scope.resetFilter = function(){
+      $scope.filter = {name: '', category: []}
+    }
     function userify(incoming) {
       var u = incoming.user
       return {
@@ -43,7 +48,7 @@
         Person.addPerson(user)
       })
     }
-
+    $scope.resetFilter()
   })
   controllers.controller('WelcomeCtrl', function($scope, Comment){
     $scope.comments = []

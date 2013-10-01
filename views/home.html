@@ -4,7 +4,7 @@
 </div>
   <div class="unit whole">
     <input class='unit whole' placeholder='Searh you contacts' type="text" ng-model='filter.name'>
-    <button title='empty filter' class='remove-icon' ng-click="filter=''"ng-show='filter.length'></button>
+    <button title='empty filter' class='remove-icon' ng-click="resetFilter()" ng-hide='isFilterEmpty()'></button>
   </div>
   <button ng-click='getRandom()'>+Random</button>
   <button ui-sref='create'>+Add</button>
