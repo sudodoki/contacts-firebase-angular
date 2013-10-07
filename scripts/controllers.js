@@ -51,11 +51,13 @@
     $scope.resetFilter()
   })
   controllers.controller('WelcomeCtrl', function($scope, Comment){
-    $scope.comments = []
+    var unwatchAll;
+    $scope.comments = Comment.all()
     $scope.$watch(Comment.authorized, function(value){
       $scope.authorized = value;
-      $scope.$watch(Comment.all, function(value){
-        if (value){$scope.comments = Comment.all()};
+      if (unwatchAll) unwatchAll();
+      unwatchAll = $scope.$watch(Comment.all, function(value){
+        if (value){$scope.comments = value};
       })
     })
     $scope.logout = Comment.logout;

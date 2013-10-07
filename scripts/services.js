@@ -68,7 +68,7 @@
         return contactDB;
       })
        .factory('Comment', function($rootScope){
-          var commentUser, notification = {}, pool = [];
+          var commentUser, notification = {}, pool = [], emptyArray = [];
           var safeApply = function() { var phase = this.$root.$$phase; if (!(phase == '$apply' || phase == '$digest')) { this.$apply(); } };
 
           var commentDB = new Firebase('https://sudodoki.firebaseio.com/comments');
@@ -90,12 +90,17 @@
                 commentUser = undefined
               }
           })
+          var oldLogin = auth.login
+          auth.login = function() {
+            console.log('hijacking log in')
+            oldLogin.apply(auth, arguments)
+          }
         return {
           all: function($scope){
             if (commentUser) {
               return pool
             } else {
-              return []
+              return emptyArray
             }
           },
           addComment: function(text){
