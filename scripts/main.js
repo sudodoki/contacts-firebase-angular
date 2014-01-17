@@ -2,6 +2,9 @@
   "use strict";
   var app = angular.module('contactsApp', ['ui.router', 'contactsApp.controllers',
                                           'contactsApp.directives', 'contactsApp.filters'])
+    .config(['$httpProvider', function($httpProvider) {
+        delete $httpProvider.defaults.headers.common["X-Requested-With"]
+    }])
     .config(function ($stateProvider) {
       $stateProvider
         .state('home', {
